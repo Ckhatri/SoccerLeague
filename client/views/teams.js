@@ -19,15 +19,24 @@ Template.teams.events({
 		Session.set('isCreatingTeam', false);
 	},
 
-	'submit .create-team': function(event){
+	'submit .create-team': function(event, template){
 		event.preventDefault();
-		var teamName = event.target.name.value;
+		var teamName = template.$('input[name=name]').val();
 		Teams.insert({name: teamName}, function(error, _id){
 			if (error) {
 				alert(error);
 				Session.set('isCreatingTeam', true);
+				Tracker.afterFlush(function() {
+					template.$('input[name=name]').val(teamName);
+				});
 			}
 		});
 		Session.set('isCreatingTeam', false);
+	},
+
+	'click .remove': function(event, template) {
+		event.preventDefault();
+		var teamID = this._id;
+		Teams.remove(teamID);
 	}
 });
