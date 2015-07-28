@@ -48,6 +48,5 @@ Meteor.methods({
 	 
 	    // Copy Meteor.insert(), which just returns the _id
 	    return gameId;
-		
 	}
 });
