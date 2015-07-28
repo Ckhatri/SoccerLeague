@@ -4,7 +4,7 @@ Router.configure({
 });
  
 Router.route('/', {
-  name: 'games',
+  name: 'home',
   waitOn: function(){
     return [Meteor.subscribe("games"), Meteor.subscribe("teams")];
   }
@@ -13,6 +13,12 @@ Router.route('/', {
 Router.route('/teams', {
   waitOn: function(){
     return Meteor.subscribe("teams");
+  }
+});
+
+Router.route('/games', {
+  waitOn: function(){
+    return Meteor.subscribe("games");
   }
 });
 
