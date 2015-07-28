@@ -45,7 +45,7 @@ Template.games.events({
 			completed: false
 		}
 
-		var gameId = games.insert(game);
+		var gameId = Games.insert(game);
 		// have to add the game id to both of the teams.
 	    Teams.update({_id: team1._id}, {$addToSet: { gameIds: gameId}});
 	    Teams.update({_id: team2._id}, {$addToSet: { gameIds: gameId}});
