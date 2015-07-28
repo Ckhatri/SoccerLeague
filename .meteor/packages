@@ -11,3 +11,4 @@ accounts-ui
 iron:router
 zimme:iron-router-active
 zimme:active-route
+sacha:spin
