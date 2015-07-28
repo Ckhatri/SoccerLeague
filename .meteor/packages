@@ -6,3 +6,5 @@
 
 meteor-platform
 msavin:mongol
+accounts-password
+accounts-ui
