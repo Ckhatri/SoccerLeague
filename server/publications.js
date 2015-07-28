@@ -1,5 +1,5 @@
 Meteor.publish('teams', function() {
-	return Teams.find();
+	return Teams.find({ownerId: this.userId});
 });
 
 
