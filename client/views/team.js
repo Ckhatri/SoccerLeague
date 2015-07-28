@@ -14,8 +14,8 @@ Template.team.events({
     if(teamName.length){
       Teams.update(this._id, {$set: {name: teamName}}, function(error) {
         if (!error) {
+          //get the games, go thorugh the games and then update the teamName. 
           var games = Games.find({_id: {$in: self.gameIds}});
-          console.log(games);
           if (games.count()) {
             _(games.fetch()).each(function(game) {
               var team = _(game.teams).findWhere({_id: self._id});
