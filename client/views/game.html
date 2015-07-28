@@ -9,13 +9,15 @@
     {{else}}
  
       {{teams.[0].name}} 
-      (<a class="one-minus" href="#">-</a> 
+      <a class="score" data-inc="-1" data-index="0" href="#">-</a> 
       {{teams.[0].score}} 
-      <a class="one-plus" href="#">+</a>)
+      <a class="score" data-inc="1" data-index="0" href="#">+</a> 
       vs
-      {{teams.[1].name}} (
+      {{teams.[1].name}} 
+      <a class="score" data-inc="-1" data-index="1" href="#">-</a> 
       <a class="two-minus" href="#">-</a> 
       {{teams.[1].score}} 
+      <a class="score" data-inc="1" data-index="1" href="#">+</a> 
       <a class="two-plus" href="#">+</a>)
  
       <a href="#" class="finish-game">Finish</a>
