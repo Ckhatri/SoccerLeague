@@ -6,7 +6,7 @@ Meteor.startup(function () {
     password: "aylmao"
   });
 
-  if (Meteor.users.find({"emails.address": dummyEmail}.count() === 0) {
+  if (Meteor.users.find({"emails.address": dummyEmail}).count() === 0) {
     [
       {name: "Barcelona", gameIds: [], ownerId: dummyOwnerId},
       {name: "Real Madrid", gameIds: [], ownerId: dummyOwnerId},
