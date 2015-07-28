@@ -1,3 +1,17 @@
+gameTeamSchema = new SimpleSchema( {
+	_id: {
+		type: String
+	},
+
+	name: {
+		type: String
+	},
+
+	score: {
+		type: Number
+	}
+});
+
 gamesSchema = new SimpleSchema({
   completed: {
     type: Boolean
@@ -8,7 +22,7 @@ gamesSchema = new SimpleSchema({
   },
   
   teams: {
-    type: [Object]
+    type: [gameTeamSchema]
   },
 
   createdAt: {
