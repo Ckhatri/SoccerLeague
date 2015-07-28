@@ -27,8 +27,8 @@ Template.game.events({
 		//have to remove the game ids from the teams collection as well.
 		Games.remove(gameId, function(error) {
 			if (!error){
-				Teams.update({_id: teamIdA}, {$pull: {gameIds: gameId}}));
-				Teams.update({_id: teamIdB}, {$pull: {gameIds: gameId}}));
+				Teams.update({_id: teamIdA}, {$pull: {gameIds: gameId}});
+				Teams.update({_id: teamIdB}, {$pull: {gameIds: gameId}});
 			}
 		});
 	}
