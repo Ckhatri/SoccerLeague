@@ -27,11 +27,8 @@ Template.games.events({
 	"submit form.form-create": function(event, template) {
 		event.preventDefault();
 		
-		var team1 = {
-			_id: template.$("select[name=teamOne]").val(),
-		    name: template.$("select[name=teamOne] option:selected").text(),
-		    score: 0
-		}
+		var teamOneId = template.$("select[name=teamOne]").val();
+		var teamTwoId = template.$("select[name=teamTwo]").val();
 
 		var team2 = {
 			_id: template.$("select[name=teamTwo]").val(),
@@ -39,16 +36,17 @@ Template.games.events({
 		    score: 0
 		}
 
-		var game = {
-			createdAt: new Date(),
-			teams: [team1, team2],
-			completed: false
-		}
+		Meteor.call("insertGames", teamOneId, teamTwoId, function(error, response) {
+			if (error) {
+				alert(error.reason);
+				Session.set("isCreatingGames", true);
+				Tracker.afterFlush(function(){
+          			tpl.$("select[name=teamOne]").val(teamOneId);
+          			tpl.$("select[name=teamTwo]").val(teamTwoId);
+        		});
+			}
+		})
 
-		var gameId = Games.insert(game);
-		// have to add the game id to both of the teams.
-	    Teams.update({_id: team1._id}, {$addToSet: { gameIds: gameId}});
-	    Teams.update({_id: team2._id}, {$addToSet: { gameIds: gameId}});
-	    Session.set('isCreatingGame', false);
+		Session.set('isCreatingGames', false);
 	}
 });

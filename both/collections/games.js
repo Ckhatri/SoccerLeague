@@ -18,13 +18,17 @@ Games.allow({
 
 Meteor.methods({
 	gamesInsert: function(teamOneId, teamTwoId){
-		var teamOne = Teams.findOne({_id: teamOneId});
-		var teamTwo = Teams.findOne({_id: teamTwoId});
+		check(Meteor.userId(), String);
+		check(teamOneId, String);
+		check(teamTwoId, String);
 
+	    var teamOne = Teams.findOne({_id: teamOneId, ownerId: Meteor.userId()});
+	    var teamTwo = Teams.findOne({_id: teamTwoId, ownerId: Meteor.userId()});
+	    
 	    if(!teamOne || !teamTwo){
 	      throw new Meteor.Error("invalid-parameters", "One of the teams doesn't exist in the database");
 	    }
-	    
+
 		var teamOneData = {
 			_id: teamOne._id,
 			name: teamOne.name,
