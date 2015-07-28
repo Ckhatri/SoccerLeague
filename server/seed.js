@@ -20,8 +20,7 @@ Meteor.startup(function () {
     	]
     }
 
-    Games.insert(game);
-    var gameId = Games.find().fetch()[0]._id;
+    var gameId = Games.insert(game);
     Teams.update({_id: team1._id}, {$addToSet: { gameIds: gameId}});
     Teams.update({_id: team2._id}, {$addToSet: { gameIds: gameId}});
   }
