@@ -18,10 +18,14 @@ Router.route('/teams', {
 
 var requireLogin = function(){
   if(!Meteor.user()){
-    this.render("accessDenied");
+    if(Meteor.loggingIn()){
+      this.render("loading");
+    } else {
+      this.render("accessDenied");
+    }
   } else {
     this.next();
   }
-};
+}
 
 Router.onBeforeAction(requireLogin);
