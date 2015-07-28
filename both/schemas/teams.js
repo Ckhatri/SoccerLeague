@@ -1,4 +1,4 @@
-Teams.attachSchema(new SimpleSchema({
+teamSchema = new SimpleSchema({
   name: {
     type: String,
     index: true,
@@ -38,4 +38,6 @@ Teams.attachSchema(new SimpleSchema({
     denyInsert: true,
     optional: true
   }
-}));
+});
+
+Teams.attachSchema(teamSchema);

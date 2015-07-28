@@ -1,4 +1,4 @@
-Games.attachSchema(new SimpleSchema({
+gamesSchema = new SimpleSchema({
   completed: {
     type: Boolean
   },
@@ -34,4 +34,6 @@ Games.attachSchema(new SimpleSchema({
     denyInsert: true,
     optional: true
   }
-}));
+});
+
+Games.attachSchema(gamesSchema);
