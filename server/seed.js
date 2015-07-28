@@ -1,12 +1,13 @@
 Meteor.startup(function () {
 
   var dummyEmail = "test@test.com";
-  var dummyOwnerId = Accounts.createUser({
-    email: dummyEmail,
-    password: "aylmao"
-  });
 
   if (Meteor.users.find({"emails.address": dummyEmail}).count() === 0) {
+      var dummyOwnerId = Accounts.createUser({
+        email: dummyEmail,
+        password: "aylmao"
+      });
+      console.log(Meteor.users.find().fetch());
     [
       {name: "Barcelona", gameIds: [], ownerId: dummyOwnerId},
       {name: "Real Madrid", gameIds: [], ownerId: dummyOwnerId},
