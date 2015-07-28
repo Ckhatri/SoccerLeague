@@ -34,3 +34,4 @@ Template.teams.events({
 		Session.set('isCreatingTeam', false);
 	}
 });
+
