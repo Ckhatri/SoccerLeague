@@ -17,7 +17,7 @@ Games.allow({
 });
 
 Meteor.methods({
-	gamesInsert: function(teamOneId, teamTwoId){
+	insertGames: function(teamOneId, teamTwoId){
 		check(Meteor.userId(), String);
 		check(teamOneId, String);
 		check(teamTwoId, String);
